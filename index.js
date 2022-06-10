@@ -3,23 +3,7 @@ const inquirer = require("inquirer");
 const fs = require('fs');
 
 
-function Employee(name, id, email){
-    this.name = name;
-    this.id = id;
-    this.email = email
-    this.getName = () => {
-        console.log(`My name is ${this.name}`)
-    }
-    this.getID = () => {
-        console.log(`My ID is ${this.id}`)
-    }
-    this.getEmail = () => {
-        console.log(`My name is ${this.email}`)
-    }
-    this.getRole = () => {
-        console.log(`I am an Employee`)
-    }
-}
+
 
 function askManagerQuestions(){
   inquirer.prompt(fileQuestions.managerQuestions)
