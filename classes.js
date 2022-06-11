@@ -23,9 +23,9 @@ constructor (name, id, email){
 }
 
 class Manager extends Employee{
-    constructor(name, id, email, officeNum){
+    constructor(name, id, email, extra){
      super(name, id, email)
-     this.officeNum = officeNum;
+     this.extra = extra;
     }
     getRole = () => {
         console.log(`I am a Manager`)
@@ -34,13 +34,13 @@ class Manager extends Employee{
 }
 
 class Engineer extends Employee{
-    constructor (name, id, email, gitHub){
+    constructor (name, id, email, extra){
         super(name, id, email)
-        this.gitHub = gitHub
+        this.extra = extra
     }
     getGitHub = () => {
-        console.log(`My GItHub is ${this.gitHub}`)
-        return this.gitHub
+        console.log(`My GItHub is ${this.extra}`)
+        return this.extra
     }
     getRole = () => {
         console.log(`I am an Engineer`)
@@ -49,12 +49,12 @@ class Engineer extends Employee{
 }
 
 class Intern extends Employee{
-    constructor(name, id, email, school){
+    constructor(name, id, email, extra){
         super(name, id, email)
-        this.school = school
+        this.extra = extra
     }
     getSchool = () => {
-        return this.school
+        return this.extra
     }
     getRole = () => {
         console.log(`I am an Intern`)
