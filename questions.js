@@ -71,8 +71,8 @@ const internQuestions = [
         type: "input" 
       },
       {
-        name: "InternGitHub",
-        message: "What is this intern's GitHub profile tag?",
+        name: "internSchool",
+        message: "What is school did this Intern go to?",
         type: "input" 
       },  
 ];

@@ -13,7 +13,7 @@ constructor (name, id, email){
         return this.id
     }
     getEmail = () => {
-        console.log(`My name is ${this.email}`)
+        console.log(`My email is ${this.email}`)
         return this.email
     }
     getRole = () => {
@@ -26,8 +26,11 @@ class Manager extends Employee{
     constructor(name, id, email, officeNum){
      super(name, id, email)
      this.officeNum = officeNum;
-}
-
+    }
+    getRole = () => {
+        console.log(`I am a Manager`)
+        return "Manager"
+    }
 }
 
 class Engineer extends Employee{
@@ -36,7 +39,12 @@ class Engineer extends Employee{
         this.gitHub = gitHub
     }
     getGitHub = () => {
+        console.log(`My GItHub is ${this.gitHub}`)
         return this.gitHub
+    }
+    getRole = () => {
+        console.log(`I am an Engineer`)
+        return "Engineer"
     }
 }
 
@@ -48,4 +56,16 @@ class Intern extends Employee{
     getSchool = () => {
         return this.school
     }
+    getRole = () => {
+        console.log(`I am an Intern`)
+        return "Intern"
+    }
+}
+
+
+module.exports = {
+    Employee,
+    Manager,
+    Engineer,
+    Intern
 }
