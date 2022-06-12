@@ -69,7 +69,7 @@ function renderHTML (){
   HTMLArray = []
 
   for(let i=0; i < results.length; i++){
-var cards = `   <div class="card" style="width: 18rem;">
+var cards = `<div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${results[i].name}</h5>
       <p class="card-text">${results[i].role}</p>
@@ -79,13 +79,13 @@ var cards = `   <div class="card" style="width: 18rem;">
       <li class="list-group-item"> Email: <a href="mailto:${results[i].email}">${results[i].email}</a></li>
       <li class="list-group-item">${results[i].third} </li>
     </ul>
-  </div>`
+  </div>
+  `
 HTMLArray.push(cards)
-console.log(HTMLArray)
-// var finalHTML = HTMLArray.pop()
-// console.log(finalHTML)
-
 }
+
+var string = HTMLArray.toString()
+var noCommas = string.replaceAll(',', '')
 
 fs.writeFile('index2.html',`
 <!DOCTYPE html>
@@ -111,7 +111,7 @@ fs.writeFile('index2.html',`
         <div class="box-3">
             <div id="box" class="box-2"></div>
         </div>
-        ${HTMLArray}
+        ${noCommas}
     </section>
     <script src="./index.js"></script>
 </body>
