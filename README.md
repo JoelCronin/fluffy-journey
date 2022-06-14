@@ -4,7 +4,8 @@
 
 In this project, I was approached to write a set of code that would allow users to quickly generate a HTML employee tree based on the responses they provided over the Inquirer NPM package. I would also have to use "Jest" to implement a robust set of tests for the code to pass. In this taks I used new concepts such as javascript super and sub classes as well as Test Driven Development (TDD) and found it to be an enjoyable project.
 
-![License](./dist/Screenshot%202022-06-14%20085807.png)
+
+![Screenshot](./dist/Screenshot%202022-06-14%20085807.png)
 
 
 ## Table of Contents
