@@ -13,40 +13,15 @@ describe("Intern", () => {
         expect(intern.school).toEqual("Yale")
     })
 
-    it("should throw an error if provided no arguments", () => {
-        const cb = () => new classes.Intern();
-  
-        // Verify that an error was thrown in the callback function
-        expect(cb).toThrow();
-      });
-    
-      it("should throw an error if 'name' is not a string", () => {
-        const cb = () => new classes.Intern(3, 1, "joel@test.com", "Yale");
-        const err = new Error("Name should be a non-empty string");
-  
-        expect(cb).toThrowError(err);
-      });
+    it("When new intern is crearted all data should be saved in correct type", () =>{
+      const intern = new classes.Intern("Joel", 1, "joel@test.com", "Yale")
 
-      it("should throw an error if 'id' is not a positive number", () => {
-        const cb = () => new classes.Intern("Joel", "number2", "joel@test.com", "Yale");
-        const err = new Error("Id should be a positive number");
-  
-        expect(cb).toThrowError(err);
-      });
-
-      it("should throw an error if 'email' does not include an @ symbol", () => {
-        const cb = () => new classes.Intern("Joel", 1, "joeltest.com", "Yale");
-        const err = new Error("Email should be in valid format");
-  
-        expect(cb).toThrowError(err);
-      });
-
-      it("should throw an error if 'School' is empty", () => {
-        const cb = () => new classes.Intern("Joel", 1, "joel@test.com", "");
-        const err = new Error("School information cannot be empty");
-  
-        expect(cb).toThrowError(err);
-      });
+      expect(typeof intern).toBe("object")
+      expect(typeof intern.name).toBe("string");
+      expect(typeof intern.id).toBe("number");
+      expect(typeof intern.email).toBe("string")
+      expect(typeof intern.school).toBe("string")
+  })
 
       it("intern.getRole() should return 'Intern' ", () => {
         const intern = new classes.Intern("Joel", 1, "joel@test.com", "Yale")

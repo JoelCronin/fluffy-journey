@@ -13,40 +13,16 @@ describe("Engineer", () => {
         expect(engineer.gitHub).toEqual("JoelCronin")
     })
 
-    it("should throw an error if provided no arguments", () => {
-        const cb = () => new classes.Engineer();
-  
-        // Verify that an error was thrown in the callback function
-        expect(cb).toThrow();
-      });
-    
-      it("should throw an error if 'name' is not a string", () => {
-        const cb = () => new classes.Engineer(3, 1, "joel@test.com", "JoelCronin");
-        const err = new Error("Name should be a non-empty string");
-  
-        expect(cb).toThrowError(err);
-      });
+    it("When new engineer is crearted all data should be saved in correct type", () =>{
+      const engineer = new classes.Engineer("Joel", 1, "joel@test.com", "JoelCronin")
 
-      it("should throw an error if 'id' is not a positive number", () => {
-        const cb = () => new classes.Engineer("Joel", "number2", "joel@test.com", "JoelCronin");
-        const err = new Error("Id should be a positive number");
-  
-        expect(cb).toThrowError(err);
-      });
+      expect(typeof engineer).toBe("object")
+      expect(typeof engineer.name).toBe("string");
+      expect(typeof engineer.id).toBe("number");
+      expect(typeof engineer.email).toBe("string")
+      expect(typeof engineer.gitHub).toBe("string")
+  })
 
-      it("should throw an error if 'email' does not include an @ symbol", () => {
-        const cb = () => new classes.Engineer("Joel", 1, "joeltest.com", "JoelCronin");
-        const err = new Error("Email should be in valid format");
-  
-        expect(cb).toThrowError(err);
-      });
-
-      it("should throw an error if 'GitHub' is empty", () => {
-        const cb = () => new classes.Engineer("Joel", 1, "joel@test.com", "");
-        const err = new Error("GitHub profile cannot be empty");
-  
-        expect(cb).toThrowError(err);
-      });
 
       it("engineer.getRole() should return 'Engineer' ", () => {
         const engineer = new classes.Engineer("Joel", 1, "joel@test.com", "JoelCronin")

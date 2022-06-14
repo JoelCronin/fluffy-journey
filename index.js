@@ -16,7 +16,6 @@ function askManagerQuestions(){
     manager.third = `Office no: ${answers.managerOffice}`
     employeeArray.push(manager)
     askEmployeeTypeQuestion();
-    return "questions asked and answers logged"
   })
 }
 
@@ -56,6 +55,7 @@ function askInternQuestions(){
   })
 }
 
+// Uses the data gathered in employeeArray to create and populate HTML file
 function renderHTML (){
   console.log("finished")
   results = employeeArray
@@ -77,10 +77,11 @@ var cards = `<div class="card" style="width: 18rem;">
 HTMLArray.push(cards)
 }
 
+// Converts the array of objects into a s tring with no commas
 var string = HTMLArray.toString()
 var noCommas = string.replaceAll(',', '')
 
-fs.writeFile('index.html',`
+fs.writeFile('./dist/index.html',`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,7 +89,7 @@ fs.writeFile('index.html',`
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Employee Tree</title>
 </head>
 <body>
