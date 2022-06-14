@@ -1,6 +1,6 @@
 // Imports
-const fileQuestions = require("./questions")
-const fileClasses = require("./classes")
+const fileQuestions = require("./js/questions")
+const fileClasses = require("./js/classes")
 const inquirer = require("inquirer");
 const fs = require('fs');
 
@@ -11,14 +11,12 @@ var employeeArray = []
 function askManagerQuestions(){
   inquirer.prompt(fileQuestions.managerQuestions)
   .then((answers) => {
-    // console.log(answers);
     manager = new fileClasses.Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOffice)
-    // console.log(manager)
     manager.role = "Manager"
     manager.third = `Office no: ${answers.managerOffice}`
     employeeArray.push(manager)
-    console.log(employeeArray)
     askEmployeeTypeQuestion();
+    return "questions asked and answers logged"
   })
 }
 
@@ -26,7 +24,6 @@ function askManagerQuestions(){
 function askEmployeeTypeQuestion(){
   inquirer.prompt(fileQuestions.employeeTypeQuestion)
   .then((answer) => {
-    console.log(answer);
     if(answer.nextEmployee === "Engineer"){
       askEngineerQuestions();
     } else if (answer.nextEmployee === "Intern"){
@@ -40,12 +37,10 @@ function askEmployeeTypeQuestion(){
 function askEngineerQuestions(){
   inquirer.prompt(fileQuestions.engineerQuestions)
   .then((answers) => {
-    console.log(answers);
     engineer = new fileClasses.Engineer(answers.engName, answers.engID, answers.engEmail, answers.engGitHub)
     engineer.role = "Engineer"
     engineer.third = `GitHub: <a href="https://github.com/${answers.engGitHub}">${answers.engGitHub}</a>`
     employeeArray.push(engineer)
-    console.log(employeeArray)
     askEmployeeTypeQuestion();
   })
 }
@@ -53,12 +48,10 @@ function askEngineerQuestions(){
 function askInternQuestions(){
   inquirer.prompt(fileQuestions.internQuestions)
   .then((answers) => {
-    console.log(answers);
     intern = new fileClasses.Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool)
     intern.role = "Intern"
     intern.third = `School: ${answers.internSchool}`
     employeeArray.push(intern)
-    console.log(employeeArray)
     askEmployeeTypeQuestion();
   })
 }
@@ -87,7 +80,7 @@ HTMLArray.push(cards)
 var string = HTMLArray.toString()
 var noCommas = string.replaceAll(',', '')
 
-fs.writeFile('index2.html',`
+fs.writeFile('index.html',`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +88,7 @@ fs.writeFile('index2.html',`
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./dist/style.css">
     <title>Employee Tree</title>
 </head>
 <body>
@@ -123,5 +116,9 @@ err ? console.error(err) : console.log('Commit logged!'))
 
 askManagerQuestions()
 
-
+module.exports ={
+  askEngineerQuestions,
+  askInternQuestions,
+  askManagerQuestions
+}
 

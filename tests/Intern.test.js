@@ -1,5 +1,5 @@
 const { isTypedArray } = require("util/types")
-const classes = require("../classes")
+const classes = require("../js/classes")
 
 describe("Intern", () => {
    //All tests for creating a new manager
@@ -41,11 +41,35 @@ describe("Intern", () => {
         expect(cb).toThrowError(err);
       });
 
-      it("should throw an error if 'School' is not a string", () => {
-        const cb = () => new classes.Intern("Joel", 1, "joel@test.com", 3);
-        const err = new Error("School information should be a non-empty string");
+      it("should throw an error if 'School' is empty", () => {
+        const cb = () => new classes.Intern("Joel", 1, "joel@test.com", "");
+        const err = new Error("School information cannot be empty");
   
         expect(cb).toThrowError(err);
+      });
+
+      it("intern.getRole() should return 'Intern' ", () => {
+        const intern = new classes.Intern("Joel", 1, "joel@test.com", "Yale")
+        expect(intern.getRole()).toEqual("Intern");
+      });
+
+      it("intern.getSchool() should return the fourth argument in the function", () => {
+        const intern = new classes.Intern("Joel", 1, "joel@test.com", "Yale")
+        expect(intern.getSchool()).toEqual("Yale");
+      });
+
+      it("intern.getname() should return the employee name", () => {
+        const intern = new classes.Intern("Joel", 1, "joel@test.com", 4)
+        expect(intern.getName()).toEqual("Joel");
+      });
+
+      it("engineer.getID() should return the ID", () => {
+        const intern = new classes.Intern("Joel", 1, "joel@test.com", 4)
+        expect(intern.getID()).toEqual(1);
+      });
+      it("engineer.getEmail() should return the email", () => {
+        const intern = new classes.Intern("Joel", 1, "joel@test.com", 4)
+        expect(intern.getEmail()).toEqual("joel@test.com");
       });
 
 

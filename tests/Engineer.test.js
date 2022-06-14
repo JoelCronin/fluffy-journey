@@ -1,5 +1,5 @@
 const { isTypedArray } = require("util/types")
-const classes = require("../classes")
+const classes = require("../js/classes")
 
 describe("Engineer", () => {
    //All tests for creating a new manager
@@ -41,11 +41,35 @@ describe("Engineer", () => {
         expect(cb).toThrowError(err);
       });
 
-      it("should throw an error if 'GitHub' is not a string", () => {
-        const cb = () => new classes.Engineer("Joel", 1, "joel@test.com", 3);
-        const err = new Error("GitHub profile should be a non-empty string");
+      it("should throw an error if 'GitHub' is empty", () => {
+        const cb = () => new classes.Engineer("Joel", 1, "joel@test.com", "");
+        const err = new Error("GitHub profile cannot be empty");
   
         expect(cb).toThrowError(err);
+      });
+
+      it("engineer.getRole() should return 'Engineer' ", () => {
+        const engineer = new classes.Engineer("Joel", 1, "joel@test.com", "JoelCronin")
+        expect(engineer.getRole()).toEqual("Engineer");
+      });
+
+      it("engineer.getGitHub() should return the engineer GItHub", () => {
+        const engineer = new classes.Engineer("Joel", 1, "joel@test.com", "JoelCronin")
+        expect(engineer.getGitHub()).toEqual("JoelCronin");
+      });
+
+      it("engineer.getname() should return the employee name", () => {
+        const engineer = new classes.Engineer("Joel", 1, "joel@test.com", 4)
+        expect(engineer.getName()).toEqual("Joel");
+      });
+
+      it("engineer.getID() should return the ID", () => {
+        const engineer = new classes.Engineer("Joel", 1, "joel@test.com", 4)
+        expect(engineer.getID()).toEqual(1);
+      });
+      it("engineer.getEmail() should return the email", () => {
+        const engineer = new classes.Engineer("Joel", 1, "joel@test.com", 4)
+        expect(engineer.getEmail()).toEqual("joel@test.com");
       });
 
 

@@ -1,5 +1,5 @@
 const { isTypedArray } = require("util/types")
-const classes = require("../classes")
+const classes = require("../js/classes")
 
 describe("Employee", () => {
    //All tests for creating a new employee
@@ -38,6 +38,24 @@ describe("Employee", () => {
         const err = new Error("Email should be in valid format");
   
         expect(cb).toThrowError(err);
+      });
+
+      it("employee.getname() should return the employee name", () => {
+        const employee = new classes.Employee("Joel", 1, "joel@test.com")
+        expect(employee.getName()).toEqual("Joel");
+      });
+
+      it("employee.getID() should return the ID", () => {
+        const employee = new classes.Employee("Joel", 1, "joel@test.com")
+        expect(employee.getID()).toEqual(1);
+      });
+      it("employee.getEmail() should return employee email", () => {
+        const employee = new classes.Employee("Joel", 1, "joel@test.com")
+        expect(employee.getEmail()).toEqual("joel@test.com");
+      });
+      it("employee.getRole() should return 'employee' ", () => {
+        const employee = new classes.Employee("Joel", 1, "joel@test.com")
+        expect(employee.getRole()).toEqual("Employee");
       });
    }) 
 })

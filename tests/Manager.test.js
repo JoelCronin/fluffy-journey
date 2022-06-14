@@ -1,5 +1,6 @@
 const { isTypedArray } = require("util/types")
-const classes = require("../classes")
+const classes = require("../js/classes")
+const index = require("../index")
 
 describe("Manager", () => {
    //All tests for creating a new manager
@@ -48,6 +49,23 @@ describe("Manager", () => {
         expect(cb).toThrowError(err);
       });
 
+      it("manager.getRole() should return 'Manager' ", () => {
+        const manager = new classes.Manager("Joel", 1, "joel@test.com", 4)
+        expect(manager.getRole()).toEqual("Manager");
+      });
 
+      it("manager.getname() should return the employee name", () => {
+        const manager = new classes.Manager("Joel", 1, "joel@test.com", 4)
+        expect(manager.getName()).toEqual("Joel");
+      });
+
+      it("manager.getID() should return the ID", () => {
+        const manager = new classes.Manager("Joel", 1, "joel@test.com", 4)
+        expect(manager.getID()).toEqual(1);
+      });
+      it("manager.getEmail() should return the email", () => {
+        const manager = new classes.Manager("Joel", 1, "joel@test.com", 4)
+        expect(manager.getEmail()).toEqual("joel@test.com");
+      });
    }) 
 })
