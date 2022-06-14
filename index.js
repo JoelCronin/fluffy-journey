@@ -81,7 +81,7 @@ HTMLArray.push(cards)
 var string = HTMLArray.toString()
 var noCommas = string.replaceAll(',', '')
 
-fs.writeFile('./dist/index.html',`
+fs.writeFile('./assets/index.html',`
 <!DOCTYPE html>
 <html lang="en">
 <head>

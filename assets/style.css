@@ -1,0 +1,20 @@
+section{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+header{
+    text-align: center;
+}
+
+.card{
+margin: 10px;
+}
+
+.card-body{
+    background-color: chartreuse;
+}
+
